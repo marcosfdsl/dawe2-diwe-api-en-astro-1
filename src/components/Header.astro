@@ -1,0 +1,64 @@
+---
+// const titulo = "Mi primer componente"
+---
+
+<!-- Header -->
+<div
+    class="flex justify-between fixed top-0 w-full bg-gradient-to-b from-black to-transparent z-50"
+>
+    <!-- Dropdown Menu para móvil -->
+    <div class="flex flex-col lg:flex-row w-full">
+        <div class="flex justify-between z-50">
+            <button
+                id="boton"
+                class="m-6 text-left text-xl text-white hover:text-gray-300 transition duration-300 ease-in-out fa-solid fa-bars esconder"
+            ></button>
+            <button
+                id="refrescar"
+                class="m-6 lg:w-40 lg:my-6 lg:text-left text-xl text-white hover:text-gray-300 transition duration-300 ease-in-out font-bold"
+            >
+                S O F O S
+            </button>
+            <i class="m-6 text-xl fa-solid fa-bars invisible esconder"></i>
+        </div>
+
+        <div
+            id="menu"
+            class="hidden lg:flex lg:flex-grow w-1/2 lg:w-max absolute left-0 top-0 pt-12 lg:pt-0 lg:relative bg-gradient-to-b from-black to-transparent z-40"
+        >
+            <div class="lg:flex lg:flex-grow lg:justify-center mt-6 lg:mt-0">
+                <div class="invisible lg:flex lg:w-1/3 h-0 lg:h-min"></div>
+                <div class="lg:flex mb-4 lg:mb-0">
+                    <button
+                        id="btnhome"
+                        class="w-full lg:w-1/3 px-6 py-2 lg:py-0 text-left text-white hover:text-gray-300 transition duration-300 ease-in-out hover:bg-black lg:hover:bg-transparent subrayado"
+                        >Home</button
+                    >
+                    <button
+                        id="btnabout"
+                        class="w-full lg:w-1/3 px-6 py-2 lg:py-0 text-left text-white hover:text-gray-300 transition duration-300 ease-in-out hover:bg-black lg:hover:bg-transparent"
+                        >About</button
+                    >
+                    <button
+                        id="btnhelp"
+                        class="w-full lg:w-1/3 px-6 py-2 lg:py-0 text-left text-white hover:text-gray-300 transition duration-300 ease-in-out hover:bg-black lg:hover:bg-transparent"
+                        >Help</button
+                    >
+                </div>
+                <div class="invisible lg:flex lg:w-1/3 h-0 lg:h-min"></div>
+            </div>
+            <div
+                class="lg:flex justify-end lg:w-44 mt-2 mb-4 ml-4 lg:mt-0 lg:mb-0 lg:ml-6 lg:mr-4"
+            >
+                <a
+                    href="https://www.linkedin.com/in/marcos-fernandez-de-salamanca/"
+                    class="self-center p-2 text-xl text-white hover:text-gray-300 transition duration-300 ease-in-out hover:bg-black lg:hover:bg-transparent fa-brands fa-linkedin"
+                ></a>
+                <a
+                    href="https://www.instagram.com/sofosbars"
+                    class="self-center p-2 text-xl text-white hover:text-gray-300 transition duration-300 ease-in-out hover:bg-black lg:hover:bg-transparent fa-brands fa-instagram"
+                ></a>
+            </div>
+        </div>
+    </div>
+</div>

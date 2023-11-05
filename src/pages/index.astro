@@ -1,0 +1,491 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from "../components/Header.txt";
+import Vista_api from "../components/Vista_api.txt";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="POKEDEX">
+	<Header />
+	<Vista_api />
+	<Footer />
+</Layout>
+
+<style is:global>
+	body {
+		/* Prevengo copy paste */
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		background-color: black;
+		/* Esto arregla error de alto de pantalla ("info" aparece desde abajo, entonces ocupa un espacio debajo de "fondo1")*/
+		position: fixed;
+	}
+
+	/* Scroll contenedorfondos */
+	.contenedorfondos {
+		scroll-snap-type: y mandatory;
+		overflow-y: scroll;
+		height: 100vh;
+	}
+
+	/* Oculta barra scroll */
+	::-webkit-scrollbar {
+		display: none;
+	}
+
+	/* Fondos */
+	.fondos {
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		scroll-snap-align: start;
+	}
+
+	.fondo1 {
+		background-image: url("images/fondo1.jpg");
+	}
+
+	.fondo2 {
+		background-image: url("images/fondo2.jpg");
+	}
+
+	.fondo3 {
+		background-image: url("images/fondo3.jpg");
+	}
+
+	/* Márgenes Rombos Negros */
+	.margenrombotop {
+		margin-top: 4px;
+		margin-bottom: -1px;
+		margin-left: 4px;
+		margin-right: -1px;
+	}
+
+	.margenrombobot {
+		margin-top: -1px;
+		margin-bottom: 4px;
+		margin-left: -1px;
+		margin-right: 4px;
+	}
+
+	.margenromboleft {
+		margin-top: -1px;
+		margin-bottom: 4px;
+		margin-left: 4px;
+		margin-right: -1px;
+	}
+
+	.margenromboright {
+		margin-top: 4px;
+		margin-bottom: -1px;
+		margin-left: -1px;
+		margin-right: 4px;
+	}
+
+	/* Rotar y des-rotar rombos e iconos" */
+	.rotar {
+		transform: rotate(45deg);
+	}
+
+	.desrotar {
+		transform: rotate(-45deg);
+	}
+
+	/* Hover azul rombos negros */
+	.hoverazul {
+		transition: background-color 0.3s;
+	}
+
+	/* Color fondo azul info */
+	.fondoazul {
+		background-color: #0d91c93a;
+	}
+
+	/* Azul links */
+	.azul {
+		color: #0778a8;
+		transition: color 0.3s;
+	}
+
+	/* Hover azul links */
+	.azul:hover {
+		color: #055f86;
+	}
+
+	/* Hover agrandar iconos rombos */
+	.agrandar {
+		transition: transform ease 0.5s;
+	}
+
+	.rotar.agrandar:hover {
+		transform: rotate(45deg) scale(1.2);
+	}
+
+	.desrotar.agrandar:hover {
+		transform: rotate(-45deg) scale(1.2);
+	}
+
+	/* Hover agrandar botón descarga CV */
+	.agrandar2 {
+		transition: all ease 0.5s;
+	}
+
+	.agrandar2:hover {
+		transform: scale(1.1);
+	}
+
+	/* Hover agrandar foto CV */
+	.agrandar3 {
+		transition: all ease 0.5s;
+	}
+
+	.agrandar3:hover {
+		transform: scale(1.05);
+	}
+
+	/* Subrayados menú */
+	@keyframes fadeInUnderline {
+		0% {
+			width: 0;
+		}
+
+		100% {
+			width: 100%;
+		}
+	}
+
+	.subrayado {
+		position: relative;
+		display: inline-block;
+	}
+
+	.subrayado::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: -2px;
+		height: 2px;
+		width: 10%;
+		background-color: rgba(255, 255, 255, 0.436);
+		transform-origin: left center;
+		animation: fadeInUnderline 0.8s forwards;
+	}
+
+	/* Video YouTube */
+	.videocontenedor {
+		position: relative;
+		width: 100%;
+		padding-top: 60%;
+		margin-top: 32px;
+		margin-bottom: 8px;
+	}
+
+	.video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	/* Responsive PC */
+	@media (min-width: 1024px) {
+		/* Oculta botón menú móvil en PC */
+		.esconder {
+			display: none;
+		}
+
+		/* Hace fondo menú transparente */
+		#menu {
+			background: transparent;
+		}
+
+		/* Video YouTube PC */
+		.videocontenedor {
+			width: 80%;
+			padding-top: 40%;
+		}
+	}
+
+	/* Responsive móvil */
+	@media (max-width: 1024px) {
+		.letra {
+			font-size: 14px;
+		}
+
+		.letra2 {
+			font-size: 11px;
+		}
+	}
+</style>
+
+<script>
+    const apiKey = "QoiAGhTz3oWDkfhqQCzSbSEALNTucTHeb3LQ5AfW";
+    const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
+
+    fetch(apiUrl)
+        .then((response) => response.json())
+        .then((data) => {
+            // Procesar la respuesta de la API
+            const apodImage = document.getElementById("apodImage");
+            const apodTitle = document.getElementById("apodTitle");
+            const apodExplanation = document.getElementById("apodExplanation");
+
+            apodImage.src = data.url;
+            apodTitle.textContent = data.title;
+            apodExplanation.textContent = data.explanation;
+        })
+        .catch((error) => {
+            console.error("Error al cargar la foto del día", error);
+        });
+
+		document.addEventListener("DOMContentLoaded", () => {
+
+});
+
+
+	document
+		.querySelector("#refrescar")
+		.addEventListener("click", () => window.location.reload());
+
+	// Dropdown oculto (menú para móvil)
+	const menu = document.querySelector("#menu");
+	const toggleMenu = (event) => {
+		menu.classList.toggle("hidden");
+		event.stopPropagation();
+	};
+	document.querySelector("#boton").addEventListener("click", toggleMenu);
+	document.addEventListener("click", () => menu.classList.add("hidden"));
+
+	// VISIBILIDAD FONDO2 SEGÚN ORIGEN Y DESTINO
+	const fondo1 = document.querySelector(".fondo2");
+	const fondo2 = document.querySelector(".fondo2");
+	const fondo3 = document.querySelector(".fondo3");
+	const contenedorfondos = document.querySelector(".contenedorfondos");
+
+	// A Home
+	document.getElementById("btnhome").addEventListener("click", function () {
+		let scrollPosition =
+			document.querySelector(".contenedorfondos").scrollTop;
+		let scrollHeight = contenedorfondos.scrollHeight;
+		// Cuando se quiere ir a fondo1 desde fondo2, si el scrollPosition es aprox un tercio del scrollHeight de contenedorfondos, fondo2 se hace visible
+		if (
+			scrollPosition >= scrollHeight / 3.5 &&
+			scrollPosition <= scrollHeight / 2.5
+		) {
+			fondo2.style.display = "flex";
+		}
+		// En caso contrario fondo2 se hace invisible y vuelve a ser visible a los 500ms
+		else {
+			fondo2.style.display = "none";
+			setTimeout(function () {
+				fondo2.style.display = "flex";
+			}, 500);
+		}
+	});
+
+	// A About
+	document.getElementById("btnabout").addEventListener("click", function () {
+		// fondo2 se hace visible
+		fondo2.style.display = "flex";
+	});
+
+	// A Help
+	document.getElementById("btnhelp").addEventListener("click", function () {
+		let scrollPosition =
+			document.querySelector(".contenedorfondos").scrollTop;
+		let scrollHeight = contenedorfondos.scrollHeight;
+		// Cuando se quiere ir a fondo3 desde fondo1 (scrollPosition 0), fondo2 se hace invisible y vuelve a ser visible a los 500ms
+		if (scrollPosition == 0) {
+			fondo2.style.display = "none";
+			setTimeout(function () {
+				fondo2.style.display = "flex";
+			}, 500);
+		}
+		// En caso contrario fondo2 se hace visible
+		else {
+			fondo2.style.display = "flex";
+		}
+	});
+
+	// Botones de navegación entre fondos
+	const actions = {
+		"#btnhome": document.querySelector(".fondo1").offsetTop,
+		"#btnabout": document.querySelector(".fondo2").offsetTop,
+		"#btnhelp": document.querySelector(".fondo3").offsetTop,
+	};
+	for (let [btn, top] of Object.entries(actions)) {
+		if (document.querySelector(btn)) {
+			document.querySelector(btn).addEventListener("click", (e) => {
+				e.preventDefault();
+				contenedorfondos.scrollTo({
+					top: top,
+					behavior: "smooth",
+				});
+			});
+		}
+	}
+
+	// Abrir info en fondo1 al pulsar "btnmusica", "btnhosteleria", "btngenealogia" o "btndesarrollo"
+	const mostrarinfo = (sectionId) => {
+		let section = document.getElementById(sectionId);
+		section.style.opacity = "1";
+		section.style.transform = "translateY(0)";
+	};
+
+	const btnToSectionMapping = {
+		btnmusica: "infomusica",
+		btnhosteleria: "infohosteleria",
+		btngenealogia: "infogenealogia",
+		btndesarrollo: "infodesarrollo",
+	};
+
+	for (const [btnId, sectionId] of Object.entries(btnToSectionMapping)) {
+		document
+			.getElementById(btnId)
+			.addEventListener("click", () => mostrarinfo(sectionId));
+	}
+
+	// Cerrar info fondo1 y pausar id="video" de "infomusica" al salir
+	var player;
+	function onYouTubeIframeAPIReady() {
+		player = new YT.Player("video");
+	}
+	const esconderinfo = (sectionId) => {
+		let section = document.getElementById(sectionId);
+		section.style.opacity = "0";
+		section.style.transform = "translateY(100%)";
+		if (player && player.pauseVideo) {
+			player.pauseVideo();
+		}
+	};
+	[
+		"infomusica",
+		"infohosteleria",
+		"infogenealogia",
+		"infodesarrollo",
+		"boton",
+		"btnhome",
+		"btnabout",
+		"btnhelp",
+	].forEach((btnId) => {
+		document.getElementById(btnId).addEventListener("click", () => {
+			esconderinfo("infomusica");
+			esconderinfo("infohosteleria");
+			esconderinfo("infogenealogia");
+			esconderinfo("infodesarrollo");
+
+			// Reinicia scroll info
+			setTimeout(() => {
+				scrollmusica.scrollTo(0, 0);
+				scrollhosteleria.scrollTo(0, 0);
+				scrollgenealogia.scrollTo(0, 0);
+				scrolldesarrollo.scrollTo(0, 0);
+			}, 200);
+		});
+	});
+
+	// Hover azul rombos fondo1
+	var elementos = document.querySelectorAll(".hoverazul");
+	elementos.forEach(function (elemento) {
+		elemento.addEventListener("mouseenter", function () {
+			this.style.backgroundColor = "#001a29";
+		});
+		elemento.addEventListener("mouseleave", function () {
+			this.style.backgroundColor = "";
+		});
+	});
+
+	// Mientras se hace scroll
+	contenedorfondos.addEventListener("scroll", function () {
+		let scrollTimeout;
+		clearTimeout(scrollTimeout);
+		const buttonIDs = [
+			"btnhome",
+			"btnabout",
+			"btnhelp",
+			"btnmusica",
+			"btnhosteleria",
+			"btngenealogia",
+			"btndesarrollo",
+		];
+		buttonIDs.forEach((id) => {
+			const button = document.getElementById(id);
+			if (button) button.setAttribute("disabled", "disabled");
+		});
+		// Al acabar scroll
+		scrollTimeout = setTimeout(function () {
+			const margen = 50;
+			const scrollPosition = contenedorfondos.scrollTop;
+			const estaCerca = (fondo) => {
+				const fondoPosition = fondo.offsetTop;
+				return (
+					scrollPosition >= fondoPosition - margen &&
+					scrollPosition <= fondoPosition + margen
+				);
+			};
+			// Si se está en fondo1
+			if (estaCerca(document.querySelector(".fondo1"))) {
+				// Deshabilita botones hasta completar scroll
+				buttonIDs.forEach((id) => {
+					const button = document.getElementById(id);
+					if (button) button.removeAttribute("disabled");
+				});
+				// Subraya Home
+				document.getElementById("btnhome").classList.add("subrayado");
+				document
+					.getElementById("btnabout")
+					.classList.remove("subrayado");
+				document
+					.getElementById("btnhelp")
+					.classList.remove("subrayado");
+				// Reinicia scrolls
+				infocv.scrollTo(0, 0);
+				scrollmusica.scrollTo(0, 0);
+				scrollhosteleria.scrollTo(0, 0);
+				scrollgenealogia.scrollTo(0, 0);
+				scrolldesarrollo.scrollTo(0, 0);
+			}
+			// Si se está en fondo2
+			else if (estaCerca(document.querySelector(".fondo2"))) {
+				// Deshabilita botones hasta completar scroll
+				buttonIDs.forEach((id) => {
+					const button = document.getElementById(id);
+					if (button) button.removeAttribute("disabled");
+				});
+				// Subraya About
+				document
+					.getElementById("btnhome")
+					.classList.remove("subrayado");
+				document.getElementById("btnabout").classList.add("subrayado");
+				document
+					.getElementById("btnhelp")
+					.classList.remove("subrayado");
+			}
+			// Si se está en fondo3
+			else if (estaCerca(document.querySelector(".fondo3"))) {
+				// Deshabilita botones hasta completar scroll
+				buttonIDs.forEach((id) => {
+					const button = document.getElementById(id);
+					if (button) button.removeAttribute("disabled");
+				});
+				// Subraya Help
+				document
+					.getElementById("btnhome")
+					.classList.remove("subrayado");
+				document
+					.getElementById("btnabout")
+					.classList.remove("subrayado");
+				document.getElementById("btnhelp").classList.add("subrayado");
+				// Reinicia scrolls
+				infocv.scrollTo(0, 0);
+				scrollmusica.scrollTo(0, 0);
+				scrollhosteleria.scrollTo(0, 0);
+				scrollgenealogia.scrollTo(0, 0);
+				scrolldesarrollo.scrollTo(0, 0);
+			}
+		}, 10);
+	});
+</script>

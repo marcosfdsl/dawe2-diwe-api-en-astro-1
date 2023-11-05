@@ -1,0 +1,296 @@
+<!-- Fondos 1, 2 y 3 -->
+<div class="contenedorfondos">
+    <!-- Contenido de fondo1 (PORTFOLIO) -->
+    <div class="flex flex-col justify-center w-screen h-screen fondos fondo1">
+        <div
+            class="flex justify-center items-center w-full h-full z-10 text-white"
+        >
+            <template>
+                <div>
+                    <h1>Imagen del día de la NASA</h1>
+                    <img src={$nasaImageUrl} alt="Imagen de la NASA" />
+                </div>
+            </template>
+
+            <script>
+                import { get } from "@api.astro";
+                export let $nasaImageUrl = "";
+
+                onMount(async () => {
+                    $nasaImageUrl = await get();
+                });
+            </script>
+        </div>
+    </div>
+
+    <!-- Contenido de fondo2 (CURRÍCULUM) -->
+    <div class="flex flex-col justify-center w-screen h-screen fondos fondo2">
+        <div
+            id="infocv"
+            class="overflow-y-auto w-5/6 lg:w-2/3 h-2/3 lg:h-3/4 self-center relative lg:mt-8 bg-white rounded-3xl"
+        >
+            <div class="text-center">
+                <!-- Encabezado -->
+                <header class="flex flex-col items-center pt-8 px-4">
+                    <!-- Foto Marcos -->
+                    <a
+                        href="https://www.linkedin.com/in/marcos-fernandez-de-salamanca/"
+                        target="_blank"
+                    >
+                        <img
+                            src="images/foto.png"
+                            alt="Foto Marcos"
+                            class="justify-center w-28 h-28 mb-4 object-cover rounded-full agrandar3"
+                        />
+                    </a>
+
+                    <!-- Info Marcos -->
+                    <div>
+                        <h1 class="mb-4 text-xl lg:text-2xl font-bold">
+                            Marcos Fernández de Salamanca López
+                        </h1>
+                        <p class="text-sm lg:text-base">11/07/2001</p>
+                        <p class="text-xs lg:text-sm font-bold">
+                            Maestro Cubiles 12, Torrelodones Madrid, 28250
+                        </p>
+                        <p class="mb-4 text-sm lg:text-base">603 330 106</p>
+                        <a
+                            class="text-sm text-red-600 hover:text-red-500 transition duration-300 ease-in-out"
+                            href="mailto:mark.musicteam@hotmail.com"
+                            >mark.musicteam@hotmail.com</a
+                        >
+                    </div>
+                </header>
+
+                <!-- Contenido principal -->
+                <main class="pt-4 px-4">
+                    <!-- Títulos académicos -->
+                    <section>
+                        <h2 class="mt-2 mb-8 text-xl lg:text-2xl font-bold">
+                            TÍTULOS ACADÉMICOS
+                        </h2>
+
+                        <!-- U-Tad -->
+                        <div class="mb-4 p-4 lg:px-64 bg-red-100 rounded">
+                            <h3 class="text-sm lg:text-base font-bold">
+                                U-Tad, Las Rozas de Madrid (CURSANDO
+                                ACTUALMENTE)
+                            </h3>
+                            <p class="text-sm lg:text-base">
+                                Grado superior en Desarrollo de Aplicaciones
+                                Web.
+                            </p>
+                        </div>
+
+                        <!-- SAE -->
+                        <div class="mb-4 p-4 lg:px-64 bg-red-200 rounded">
+                            <h3 class="text-sm lg:text-base font-bold">
+                                SAE Institute Spain, Madrid (MAYO 2022)
+                            </h3>
+                            <p class="text-sm lg:text-base">
+                                Programa en producción de música urbana.
+                            </p>
+                        </div>
+
+                        <!-- IES -->
+                        <div class="mb-4 p-4 lg:px-64 bg-red-100 rounded">
+                            <h3 class="text-sm lg:text-base font-bold">
+                                I.E.S. Diego Velázquez, Torrelodones, Madrid
+                                (JUNIO 2020)
+                            </h3>
+                            <p class="text-sm lg:text-base">
+                                Bachillerato Social.
+                            </p>
+                        </div>
+
+                        <!-- USA -->
+                        <div class="mb-4 p-4 lg:px-64 bg-red-200 rounded">
+                            <h3 class="text-sm lg:text-base font-bold">
+                                Paisley School, Oregon, EEUU (MAYO 2017)
+                            </h3>
+                            <p class="text-sm lg:text-base">
+                                Educación Secundaria Obligatoria.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Experiencia -->
+                    <section>
+                        <h2 class="my-8 text-xl lg:text-2xl font-bold">
+                            EXPERIENCIA
+                        </h2>
+
+                        <!-- Camarero en Aperitoche -->
+                        <div class="mb-4 p-4 lg:px-64 bg-gray-100 rounded">
+                            <h3 class="text-sm lg:text-base font-bold">
+                                Camarero en Aperitoche, Las Rozas
+                            </h3>
+                            <p class="text-sm lg:text-base">
+                                Funciones en las áreas de barra y sala (marzo
+                                2023-presente).
+                            </p>
+                        </div>
+
+                        <!-- Roboticlab -->
+                        <div class="mb-4 p-4 lg:px-64 bg-gray-200 rounded">
+                            <h3 class="text-sm lg:text-base font-bold">
+                                Talleres y actividades en RoboticLab
+                            </h3>
+                            <p class="text-sm lg:text-base">
+                                Dando clases particulares y talleres de
+                                programación a grupos de niños jóvenes
+                                (2022-2023).
+                            </p>
+                        </div>
+
+                        <!-- Primer encargado y jefe de sala en Anubis Shisha Lounge Heron City -->
+                        <div class="mb-4 p-4 lg:px-64 bg-gray-300 rounded">
+                            <h3 class="text-sm lg:text-base font-bold">
+                                Primer encargado y jefe de sala en Anubis Shisha
+                                Lounge Heron City
+                            </h3>
+                            <p class="text-sm lg:text-base">
+                                Estrategia del manejo de personal, gestión
+                                administrativa y de seguridad, contabilidad,
+                                registro y facturación, control de productos y
+                                proveedores (febrero-junio 2021).
+                            </p>
+                        </div>
+
+                        <!-- Camarero en Anubis Shisha Lounge Xanadú -->
+                        <div class="mb-4 p-4 lg:px-64 bg-gray-200 rounded">
+                            <h3 class="text-sm lg:text-base font-bold">
+                                Camarero en Anubis Shisha Lounge Xanadú
+                            </h3>
+                            <p class="text-sm lg:text-base">
+                                Funciones en las áreas de barra y cachimbas
+                                (enero 2021).
+                            </p>
+                        </div>
+
+                        <!-- Año de estudios en Oregón, EEUU -->
+                        <div class="mb-4 p-4 lg:px-64 bg-gray-100 rounded">
+                            <h3 class="text-sm lg:text-base font-bold">
+                                Año de estudios en Oregón, EEUU
+                            </h3>
+                            <p class="text-sm lg:text-base">
+                                Realizando trabajos de campo y actividades de
+                                hostelería (2016-2017).
+                            </p>
+                        </div>
+
+                        <!-- Realización de un voluntariado en la India -->
+                        <div class="mb-4 p-4 lg:px-64 bg-gray-200 rounded">
+                            <h3 class="text-sm lg:text-base font-bold">
+                                Realización de un voluntariado en la India
+                            </h3>
+                            <p class="text-sm lg:text-base">
+                                (junio-julio 2014).
+                            </p>
+                        </div>
+
+                        <!-- Organización de eventos juveniles en Torreforum, Torrelodones -->
+                        <div class="mb-4 p-4 lg:px-64 bg-gray-300 rounded">
+                            <h3 class="text-sm lg:text-base font-bold">
+                                Organización de eventos juveniles en Torreforum,
+                                Torrelodones
+                            </h3>
+                            <p class="text-sm lg:text-base">(2013-2015).</p>
+                        </div>
+                    </section>
+
+                    <!-- Habilidades y conocimientos -->
+                    <section>
+                        <h2 class="my-8 text-xl lg:text-2xl font-bold">
+                            HABILIDADES Y CONOCIMIENTOS
+                        </h2>
+
+                        <!-- Desarrollo Web -->
+                        <div class="mb-4 p-4 lg:px-64 bg-red-100 rounded">
+                            <h3 class="text-sm lg:text-base font-bold">
+                                Desarrollo Web Full Stack (front-end, back-end y
+                                base de datos)
+                            </h3>
+                            <p class="text-sm lg:text-base">
+                                HTML, CSS, JavaScript, Java, MySQL...
+                            </p>
+                        </div>
+
+                        <!-- Ofimática -->
+                        <div class="mb-4 p-4 lg:px-64 bg-red-200 rounded">
+                            <h3 class="text-sm lg:text-base font-bold">
+                                Conocimientos en programas de ofimática
+                            </h3>
+                            <p class="text-sm lg:text-base">
+                                Word, Excel, Access...
+                            </p>
+                        </div>
+
+                        <!-- IES -->
+                        <div class="mb-4 p-4 lg:px-64 bg-red-100 rounded">
+                            <p class="text-sm lg:text-base">
+                                Facilidad para la organización y la resolución
+                                de problemas.
+                            </p>
+                        </div>
+
+                        <!-- USA -->
+                        <div class="mb-4 p-4 lg:px-64 bg-red-200 rounded">
+                            <p class="text-sm lg:text-base">
+                                Facilidad para la comunicación y el
+                                asesoramiento a clientes.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Idiomas -->
+                    <section>
+                        <h2 class="my-8 text-xl lg:text-2xl font-bold">
+                            IDIOMAS
+                        </h2>
+
+                        <!-- Inglés -->
+                        <div class="mb-12 p-4 lg:px-64 bg-gray-200 rounded">
+                            <h3 class="text-sm lg:text-base font-bold">
+                                Inglés avanzado C1
+                            </h3>
+                            <p class="text-sm lg:text-base">
+                                CAE (Certificate in Advanced English).
+                            </p>
+                        </div>
+                    </section>
+                </main>
+            </div>
+
+            <!-- Descargar CV -->
+            <div class="flex justify-center w-full mt-8 sticky bottom-4 z-40">
+                <a
+                    href="https://drive.google.com/uc?export=download&id=1UpFAbqHcfETvPPIOx5A_C2wOHzq5LpDf"
+                    title="Descargar CV"
+                    class="flex justify-center items-center bg-black rounded-full w-12 h-12 hover:bg-gray-800 agrandar2"
+                >
+                    <i class="fa-solid fa-file-arrow-down text-white text-xl"
+                    ></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido de fondo3 (AYUDA) -->
+    <div class="flex flex-col justify-center w-screen h-screen fondos fondo3">
+        <div class="h-full flex flex-col justify-center items-center">
+            <p class="m-8 text-center text-white">
+                Este es el portfolio de Marcos Fernández de Salamanca (Sofos),
+                un joven de 22 años de la localidad de Torrelodones, Madrid.
+            </p>
+            <p class="m-8 text-center text-white">
+                Para desplazarse en dispositivos móviles, utilice el botón de la
+                esquina superior izquierda para desplegar el menú.
+            </p>
+            <p class="m-8 text-center text-white">
+                Para desplazarse en escritorios, utilice la rueda de
+                desplazamiento del ratón o pulse los botones del menú superior.
+            </p>
+        </div>
+    </div>
+</div>
