@@ -1,14 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from "../components/Header.txt";
-import Vista_api from "../components/Vista_api.txt";
-import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Vista_api from "../components/Vista_api.astro";
 ---
 
 <Layout title="POKEDEX">
 	<Header />
 	<Vista_api />
-	<Footer />
+	<script src="../routes/main.js"></script>
 </Layout>
 
 <style is:global>
@@ -221,7 +220,7 @@ import Footer from "../components/Footer.astro";
 	}
 </style>
 
-<script>
+<!-- <script>
     const apiKey = "QoiAGhTz3oWDkfhqQCzSbSEALNTucTHeb3LQ5AfW";
     const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
 
@@ -488,4 +487,4 @@ import Footer from "../components/Footer.astro";
 			}
 		}, 10);
 	});
-</script>
+</script> -->

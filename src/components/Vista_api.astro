@@ -5,21 +5,17 @@
         <div
             class="flex justify-center items-center w-full h-full z-10 text-white"
         >
-            <template>
-                <div>
-                    <h1>Imagen del día de la NASA</h1>
-                    <img src={$nasaImageUrl} alt="Imagen de la NASA" />
-                </div>
-            </template>
 
-            <script>
-                import { get } from "@api.astro";
-                export let $nasaImageUrl = "";
 
-                onMount(async () => {
-                    $nasaImageUrl = await get();
-                });
-            </script>
+        <label for="pokemon-seleccionado">Selecciona un Pokémon:</label>
+        <select id="pokemon-seleccionado"></select>
+    
+        <div id="pokemon-info">
+            <!-- Relleno el div con la info de pokemonSeleccionado -->
+        </div>    
+        
+        
+
         </div>
     </div>
 
