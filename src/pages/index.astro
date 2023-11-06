@@ -9,7 +9,6 @@ import Footer from "../components/Footer.astro";
 	<Header />
 	<Vista_api />
 	<Footer />
-	<script src="../routes/main.js"></script>
 </Layout>
 
 <style is:global>
@@ -51,45 +50,7 @@ import Footer from "../components/Footer.astro";
 	.fondo2 {
 		background-image: url("../../public/images/fondo2.jpg");
 	}
-
-	.fondo3 {
-		background-image: url("../../public/images/fondo3.jpg");
-	}
-
-	/* Color fondo azul info */
-	.fondoazul {
-		background-color: #0d91c93a;
-	}
-
-	/* Azul links */
-	.azul {
-		color: #0778a8;
-		transition: color 0.3s;
-	}
-
-	/* Hover azul links */
-	.azul:hover {
-		color: #055f86;
-	}
-
-	/* Hover agrandar botón descarga CV */
-	.agrandar2 {
-		transition: all ease 0.5s;
-	}
-
-	.agrandar2:hover {
-		transform: scale(1.1);
-	}
-
-	/* Hover agrandar foto CV */
-	.agrandar3 {
-		transition: all ease 0.5s;
-	}
-
-	.agrandar3:hover {
-		transform: scale(1.05);
-	}
-
+	
 	/* Subrayados menú */
 	@keyframes fadeInUnderline {
 		0% {
@@ -124,16 +85,9 @@ import Footer from "../components/Footer.astro";
 		.esconder {
 			display: none;
 		}
-
 		/* Hace fondo menú transparente */
 		#menu {
 			background: transparent;
-		}
-
-		/* Video YouTube PC */
-		.videocontenedor {
-			width: 80%;
-			padding-top: 40%;
 		}
 	}
 
@@ -142,7 +96,6 @@ import Footer from "../components/Footer.astro";
 		.letra {
 			font-size: 14px;
 		}
-
 		.letra2 {
 			font-size: 11px;
 		}

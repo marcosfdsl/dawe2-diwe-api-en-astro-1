@@ -1,7 +1,3 @@
----
-// const titulo = "Mi primer componente"
----
-
 <!-- Header -->
 <div
     class="flex justify-between fixed top-0 w-full bg-gradient-to-b from-black to-transparent z-50"
@@ -9,23 +5,25 @@
     <!-- Dropdown Menu para móvil -->
     <div class="flex flex-col lg:flex-row w-full">
         <div class="flex justify-between z-50">
+            <!-- Botón desplegar menú en móvil -->
             <button
                 id="boton"
                 class="m-6 text-left text-xl text-white hover:text-gray-300 transition duration-300 ease-in-out fa-solid fa-bars esconder"
             ></button>
+            <!-- Título -->
             <button
                 id="refrescar"
                 class="m-6 lg:w-40 lg:my-6 lg:text-left text-xl text-white hover:text-gray-300 transition duration-300 ease-in-out font-bold"
             >
-                S O F O S
+                P O K É D E X
             </button>
             <i class="m-6 text-xl fa-solid fa-bars invisible esconder"></i>
         </div>
-
         <div
             id="menu"
             class="hidden lg:flex lg:flex-grow w-1/2 lg:w-max absolute left-0 top-0 pt-12 lg:pt-0 lg:relative bg-gradient-to-b from-black to-transparent z-40"
         >
+            <!-- Home y About -->
             <div class="lg:flex lg:flex-grow lg:justify-center mt-6 lg:mt-0">
                 <div class="invisible lg:flex lg:w-1/3 h-0 lg:h-min"></div>
                 <div class="lg:flex lg:ml-1 mb-4 lg:mb-0">
@@ -45,6 +43,7 @@
                 </div>
                 <div class="invisible lg:flex lg:w-1/3 h-0 lg:h-min"></div>
             </div>
+            <!-- Linkedin e Instagram -->
             <div
                 class="lg:flex justify-end lg:w-44 mt-2 mb-4 ml-4 lg:mt-0 lg:mb-0 lg:ml-6 lg:mr-4"
             >

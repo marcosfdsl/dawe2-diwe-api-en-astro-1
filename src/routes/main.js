@@ -1,3 +1,5 @@
+// API POKÉMON
+
 const pokemonSeleccionado = document.getElementById("pokemon-seleccionado");
 const pokemonInfo = document.getElementById("pokemon-info");
 
@@ -6,14 +8,14 @@ async function cargarPokemons() {
     try {
         const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=100");
         const data = await response.json();
-
+        // Array de info para la propiedad results de cada pokémon
         data.results.forEach(pokemon => {
             const option = document.createElement("option");
             option.value = pokemon.name;
             option.text = pokemon.name;
             pokemonSeleccionado.appendChild(option);
         });
-
+        // Si cambia pokemonSeleccionado, se llama a cargarInfo
         pokemonSeleccionado.addEventListener("change", () => {
             const pokemonSeleccionado2 = pokemonSeleccionado.value;
             cargarInfo(pokemonSeleccionado2);
@@ -26,17 +28,24 @@ async function cargarPokemons() {
 // Función que carga y muestra la información de pokemonSeleccionado
 async function cargarInfo(nombre) {
     try {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`);
-        const data = await response.json();
-
-        const pokemonHTML = `
-            <h2>${data.name}</h2>
-            <img src="${data.sprites.front_default}" alt="${data.name}">
-            <p>Altura: ${data.height} dm</p>
-            <p>Peso: ${data.weight} hg</p>
-        `;
-
-        pokemonInfo.innerHTML = pokemonHTML;
+        if (nombre === "Selecciona un pokémon") {
+            // Si la opción "Selecciona un pokémon" está seleccionada, se borra la información
+            pokemonInfo.innerHTML = "";
+        } else {
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`);
+            const data = await response.json();
+            // Para ver la información en la consola
+            console.log(data);
+            // La información que quiero que se muestre
+            const mayus = data.name.charAt(0).toUpperCase() + data.name.slice(1);
+            const pokemonHTML = `
+                            <h2 class="drop-shadow-2xl">${mayus}</h2>
+                            <img class="drop-shadow-2xl w-36" src="${data.sprites.front_default}" alt="${data.name}">
+                            <p class="drop-shadow-2xl">Altura: ${data.height} dm</p>
+                            <p class="drop-shadow-2xl">Peso: ${data.weight} hg</p>
+                        `;
+            pokemonInfo.innerHTML = pokemonHTML;
+        }
     } catch (error) {
         console.error("Error al cargar");
     }

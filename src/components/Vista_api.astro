@@ -1,23 +1,25 @@
-<!-- Fondos 1, 2 y 3 -->
+<!-- Fondos 1 y 2 -->
 <div class="contenedorfondos">
     <!-- Contenido de fondo1 (POKÉMONS) -->
     <div class="flex flex-col justify-center w-screen h-screen fondos fondo1">
         <div
-            class="h-1/3 flex flex-col justify-center items-center w-full z-10 text-white"
+            class="h-1/2 flex flex-col justify-center items-center w-full z-10 text-white"
         >
             <div class="flex flex-col">
-                <label class="h-1/3 self-end" for="pokemon-seleccionado"
+                <label class="h-1/3 self-end drop-shadow-2xl" for="pokemon-seleccionado"
                     >Selecciona un Pokémon:</label
                 >
             </div>
-
+            <!-- Select pokémon -->
             <div class="h-1/3 flex items-center justify-center">
-                <select class="h-1/3 text-black" id="pokemon-seleccionado"
-                ></select>
+                <select class="bg-black text-white border p-2 text-sm rounded-md" id="pokemon-seleccionado"
+                >
+                <option id="selecciona">Selecciona un pokémon</option>
+            </select>
             </div>
-
+            <!-- Info pokémon -->
             <div
-                class="mt-8 h-1/3 flex flex-col justify-center items-center"
+                class="mt-12 h-1/3 flex flex-col justify-center items-center"
                 id="pokemon-info"
             >
                 <!-- Relleno el div con la info de pokemonSeleccionado -->
@@ -25,20 +27,21 @@
         </div>
     </div>
 
-    <!-- Contenido de fondo2 (AYUDA) -->
+    <!-- Contenido de fondo2 (INFO) -->
     <div class="flex flex-col justify-center w-screen h-screen fondos fondo2">
         <div class="h-full flex flex-col justify-center items-center">
             <p class="m-8 text-center text-white">
-                Este es el portfolio de Marcos Fernández de Salamanca (Sofos),
-                un joven de 22 años de la localidad de Torrelodones, Madrid.
+                Esta es la página de Marcos Fernández de Salamanca, alumno de 2º
+                de DAWE en U-Tad.
             </p>
             <p class="m-8 text-center text-white">
-                Para desplazarse en dispositivos móviles, utilice el botón de la
-                esquina superior izquierda para desplegar el menú.
+                La página consiste en una vista que permite al usuario
+                seleccionar un pokémon y mostrar una imagen, su altura y su
+                peso.
             </p>
             <p class="m-8 text-center text-white">
-                Para desplazarse en escritorios, utilice la rueda de
-                desplazamiento del ratón o pulse los botones del menú superior.
+                La información es recibida mediante un fetch que realiza una
+                solicitud GET a la API según el pokémon seleccionado.
             </p>
         </div>
     </div>
